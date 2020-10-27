@@ -101,6 +101,7 @@ class RubiksGrid(RandomGrid):
     def __init__(self, grid=None, lookup=None):
         super().__init__(n=5,includeBlank=True, grid=grid, lookup=None)
         self.score = None
+        self.previousMove = None
     
     
     def make_move(self,x1,y1,x2,y2, previousMove=None):
