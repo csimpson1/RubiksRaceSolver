@@ -31,7 +31,8 @@ class RandomGrid:
         
         else:
             self.lookup = lookup
-            
+        
+        
     
     def create_lookup(self):
         
@@ -98,10 +99,10 @@ class RandomGrid:
     
 class RubiksGrid(RandomGrid):
     
-    def __init__(self, grid=None, lookup=None):
+    def __init__(self, grid=None, lookup=None, previousMove=None):
         super().__init__(n=5,includeBlank=True, grid=grid, lookup=None)
         self.score = None
-        self.previousMove = None
+        self.previousMove = previousMove
     
     
     def make_move(self,x1,y1,x2,y2, previousMove=None):
@@ -157,7 +158,7 @@ class RubiksGrid(RandomGrid):
                     newGrid[x1][y1],newGrid[x2][y2] = newGrid[x2][y2], newGrid[x1][y1]
                     newLookup = self.get_updated_lookup(x1, y1, x2, y2)
                     
-                    return RubiksGrid(grid=newGrid, lookup=newLookup)
+                    return RubiksGrid(grid=newGrid, lookup=newLookup, previousMove = (x1,y1,x2,y2))
                 
         
     
